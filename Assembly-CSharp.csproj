@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CircleSpace.cs" />
      <Compile Include="Assets\Scripts\ColorManager.cs" />
+     <Compile Include="Assets\Scripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Drag.cs" />
      <Compile Include="Assets\Scripts\Extrovert.cs" />
      <Compile Include="Assets\Scripts\Friend.cs" />

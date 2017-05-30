@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,17 +18,22 @@ public class Friend : MonoBehaviour {
 	public Vector3 normalRingScale;
 	public Vector3 dancefloorRingScale;
 	public Vector3 barRingScale;
+	public int barMaxEntities;
 
 	public bool amIhappy;
 	public bool withFriend;
-	public GameObject thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends;
+	public GameObject thisIsMyFriend;
+	public string whereAmI;
 
 	Transform[] myRing;
+
+	public Dialogue myDialogue;
 
 	void Start() {
 		myRing = gameObject.GetComponentsInChildren<Transform>();
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
+		whereAmI = "Neutral";
 		happyChecker ();
 	}
 
@@ -53,16 +57,83 @@ public class Friend : MonoBehaviour {
 			myColorManager.HappyAnimation (); //happy
 			myGameManager.addToList(gameObject, amIhappy);
 		}
+		myDialogue.gameObject.SendMessage ("PleaseTellMeWhereIAm", whereAmI);
+		myDialogue.gameObject.SendMessage ("PleaseTellMeIfImHappy", amIhappy);
 
 		//Debug.Log (amIhappy);
 	}
 
+	//ZONE 1 PARAMS
+	public void enterDancefloorParams ()
+	{
+		whereAmI = "Dancefloor";
+		currentMinEntities = currentMinEntities + 30;
+		happyChecker ();
+
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				//component.gameObject.transform.localScale = dancefloorRingScale;
+			}
+		}
+		Debug.Log ("Friend Entered Dancefloor");
+		happyChecker();
+	}
+
+	public void leaveDancefloorParams ()
+	{
+		whereAmI = "Neutral";
+		currentMinEntities = minEntities;
+
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				//component.gameObject.transform.localScale = normalRingScale;
+			}
+		}
+		Debug.Log ("Friend left Dancefloor");
+		happyChecker ();
+	}
+
+	//ZONE 2 PARAMS
+	public void enterBarParams ()
+	{
+		whereAmI = "Bar";
+		currentMaxEntities = barMaxEntities;
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				//component.gameObject.transform.localScale = barRingScale;
+			}
+		}
+		Debug.Log ("Friend Entered Bar");
+		happyChecker();
+	}
+
+	public void leaveBarParams ()
+	{
+		whereAmI = "Neutral";
+		currentMaxEntities = maxEntities;
+
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				//component.gameObject.transform.localScale = normalRingScale;
+			}
+		}
+		Debug.Log ("Friend left Bar");
+		happyChecker();
+	}
 
 
 	public void withFriendParams()
 	{
 		currentMaxEntities = currentMaxEntities + 1;
-		currentMinEntities = currentMinEntities - 1;
+		currentMinEntities = minEntities;
 		//myRing.localScale = new Vector3(1.25f, 1, 1.25f);
 		Debug.Log("friendmax" + maxEntities);
 		Debug.Log("friendcurr max" + currentMaxEntities);
@@ -75,8 +146,8 @@ public class Friend : MonoBehaviour {
 
 	public void withoutFriendParams()
 	{
-		currentMaxEntities = currentMaxEntities + 1;
-		currentMinEntities = currentMinEntities - 1;
+		currentMaxEntities = maxEntities;
+		currentMinEntities = minEntities;
 		//myRing.localScale = new Vector3(1.25f, 1, 1.25f);
 		Debug.Log("friendmax" + maxEntities);
 		Debug.Log("friendcurr max" + currentMaxEntities);
@@ -85,5 +156,7 @@ public class Friend : MonoBehaviour {
 		withFriend = false;
 		happyChecker();
 	}
+
+
 }
 

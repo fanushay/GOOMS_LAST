@@ -36,7 +36,7 @@ public class CircleSpace : MonoBehaviour
 			SendMessage ("enterBarParams");
 		}
 
-		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends)
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriend)
 		{
 			SendMessage("withFriendParams");
 		}
@@ -60,7 +60,7 @@ public class CircleSpace : MonoBehaviour
 			SendMessage ("leaveBarParams");
 		}
 
-		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriendWhoILoveAndCameToThisPartyTogetherWithCauseWeAreBestFriends)
+		if (GetComponent<Friend>() && receivedEntity.gameObject.name.Contains("Friend") && receivedEntity.gameObject == GetComponent<Friend>().thisIsMyFriend)
 		{
 			SendMessage("withoutFriendParams");
 		}

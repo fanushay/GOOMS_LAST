@@ -14,6 +14,7 @@ public class GameTimer : MonoBehaviour {
 	public GameObject cozyWin; 
 
 
+	GameObject [] getAll;
 
 	void Start () {
 		timer = GetComponent<Text> ();
@@ -42,6 +43,12 @@ public class GameTimer : MonoBehaviour {
 				playAgain.SetActive (true);
 				Quit.SetActive (true);
 				//timer.text = "Game Over";
+				if (getAll == null) {
+					getAll = GameObject.FindGameObjectsWithTag ("Character");
+				}
+				foreach (GameObject entity in getAll) {
+					entity.GetComponent<Drag> ().canIMoveIfIAmDraggedBecauseTheGameHasNotYetEnded = false;
+				}
 			}
 
 //			if(youWin.activeSelf == true){

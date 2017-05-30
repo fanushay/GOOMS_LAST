@@ -11,6 +11,7 @@ public class Drag : MonoBehaviour {
 
 	public Rigidbody myRigidbody;
 	public bool canIMoveIfIAmDraggedBecauseTheGameHasNotYetEnded = true;
+	public bool amIBeingDraggedAroundByThePlayerInput = false;
 
 	void Start() {
 		myRigidbody = GetComponent<Rigidbody> ();
@@ -18,6 +19,7 @@ public class Drag : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		amIBeingDraggedAroundByThePlayerInput = true;
 		screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 		offset =  transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,screenPoint.z));
 	}
@@ -40,5 +42,10 @@ public class Drag : MonoBehaviour {
 
 		//draggedObject.transform.position = inputPosition;// + touchOffset;
 		//transform.position = curPosition;
+	}
+
+	void OnMouseUp() 
+	{
+		amIBeingDraggedAroundByThePlayerInput = false;
 	}
 }

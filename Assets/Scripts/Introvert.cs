@@ -21,7 +21,7 @@ public class Introvert : MonoBehaviour {
 
 	public string whereAmI;
 
-
+	public Dialogue myDialogue;
 
 	Transform[] myRing;
 
@@ -31,6 +31,7 @@ public class Introvert : MonoBehaviour {
 		myRing = gameObject.GetComponentsInChildren<Transform> ();
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
+		whereAmI = "Neutral";
 		happyChecker ();
 	}
 
@@ -51,6 +52,8 @@ public class Introvert : MonoBehaviour {
 			myColorManager.HappyAnimation (); //happy
 			myGameManager.addToList(gameObject, amIhappy);
 		}
+		myDialogue.gameObject.SendMessage ("PleaseTellMeWhereIAm", whereAmI);
+		myDialogue.gameObject.SendMessage ("PleaseTellMeIfImHappy", amIhappy);
 	}
 
 
@@ -65,7 +68,7 @@ public class Introvert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = zoneRingScale;
+				//component.gameObject.transform.localScale = zoneRingScale;
 			}
 		}
 		Debug.Log ("Introvert Entered Dancefloor");
@@ -81,7 +84,7 @@ public class Introvert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = normalRingScale;
+				//component.gameObject.transform.localScale = normalRingScale;
 			}
 		}
 		Debug.Log ("Introvert left Dancefloor");
@@ -97,7 +100,7 @@ public class Introvert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = zone2RingScale;
+				//component.gameObject.transform.localScale = zone2RingScale;
 			}
 		}
 		Debug.Log ("Introvert Entered Bar");
@@ -113,7 +116,7 @@ public class Introvert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = normalRingScale;
+				//component.gameObject.transform.localScale = normalRingScale;
 			}
 		}
 		Debug.Log ("Introvert left Bar");

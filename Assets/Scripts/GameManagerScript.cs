@@ -54,7 +54,6 @@ public class GameManagerScript : MonoBehaviour
 	void Update (){
 
 		if (unHappyGuests.Count == 0) {
-			Debug.Log ("YOU WIN");
 			youWin.SetActive (true);
 			nextButton.SetActive (true);
 

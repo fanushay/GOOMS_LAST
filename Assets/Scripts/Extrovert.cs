@@ -24,6 +24,7 @@ public class Extrovert : MonoBehaviour {
 
 	Transform[] myRing;
 
+	public Dialogue myDialogue;
 
 	void Start() {
 		myRing = gameObject.GetComponentsInChildren<Transform> ();
@@ -31,6 +32,7 @@ public class Extrovert : MonoBehaviour {
 
 		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
+		whereAmI = "Neutral";
 		happyChecker ();
 	}
 
@@ -53,6 +55,8 @@ public class Extrovert : MonoBehaviour {
 			myColorManager.HappyAnimation (); //happy
 			myGameManager.addToList(gameObject, amIhappy);
 		}
+		myDialogue.gameObject.SendMessage ("PleaseTellMeWhereIAm", whereAmI);
+		myDialogue.gameObject.SendMessage ("PleaseTellMeIfImHappy", amIhappy);
 
 		//Debug.Log (amIhappy);
 	}
@@ -67,7 +71,7 @@ public class Extrovert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = zoneRingScale ;
+				//component.gameObject.transform.localScale = zoneRingScale ;
 			}
 		}
 		Debug.Log ("Extrovert Entered Dancefloor");
@@ -84,7 +88,7 @@ public class Extrovert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = normalRingScale;
+				//component.gameObject.transform.localScale = normalRingScale;
 			}
 		}
 
@@ -102,7 +106,7 @@ public class Extrovert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = zone2RingScale;
+				//component.gameObject.transform.localScale = zone2RingScale;
 			}
 		}
 		Debug.Log ("Extrovert Entered Bar");
@@ -117,7 +121,7 @@ public class Extrovert : MonoBehaviour {
 		{
 			if (component.gameObject.transform.parent != null)
 			{
-				component.gameObject.transform.localScale = normalRingScale;
+				//component.gameObject.transform.localScale = normalRingScale;
 			}
 		}
 		Debug.Log ("Extrovert Left Bar");
