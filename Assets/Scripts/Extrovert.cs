@@ -11,23 +11,25 @@ public class Extrovert : MonoBehaviour {
 
 	public int maxEntities;
 	public int minEntities;
-    public Vector3 normalRingScale;
-    public Vector3 zoneRingScale;
+	public Vector3 normalRingScale;
+	public Vector3 zoneRingScale;
+	public Vector3 zone2RingScale;
 
-    int currentMaxEntities;
+	int currentMaxEntities;
 	int currentMinEntities;
 
 	public bool amIhappy;
 
+	public string whereAmI;
+
 	Transform[] myRing;
-    //Vector3 normalRingSize = new Vector3 (1,1,1);
-    //Vector3 zoneRingSize = new Vector3(0.75f, 0.75f, 0.75f);;
+
 
 	void Start() {
 		myRing = gameObject.GetComponentsInChildren<Transform> ();
-        
 
-        currentMaxEntities = maxEntities;
+
+		currentMaxEntities = maxEntities;
 		currentMinEntities = minEntities;
 		happyChecker ();
 	}
@@ -35,8 +37,7 @@ public class Extrovert : MonoBehaviour {
 	public void happyChecker ()
 	{
 
-		//myGameManager.happyGuests.Clear ();
-		//myGameManager.unHappyGuests.Clear ();
+
 
 		if (myCircleSpace.entities.Count > currentMaxEntities || myCircleSpace.entities.Count < currentMinEntities)
 		{
@@ -56,43 +57,71 @@ public class Extrovert : MonoBehaviour {
 		//Debug.Log (amIhappy);
 	}
 
-	public void enterZoneParams ()
+	public void enterDancefloorParams ()
 	{
+		whereAmI = "Dancefloor";
 		currentMaxEntities = maxEntities + 1;
-		currentMinEntities = minEntities - 1;
-       
-        foreach (Transform component in myRing)
-        {
-            if (component.gameObject.transform.parent != null)
-            {
-                component.gameObject.transform.localScale = zoneRingScale ;
-            }
-        }
-        Debug.Log("max" + maxEntities);
-        Debug.Log("curr max" + currentMaxEntities);
-        Debug.Log("min" + minEntities);
-        Debug.Log("curr min" + currentMinEntities);
-        happyChecker();
-    }
+		currentMinEntities = 0;
 
-	public void leaveZoneParams ()
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = zoneRingScale ;
+			}
+		}
+		Debug.Log ("Extrovert Entered Dancefloor");
+		happyChecker();
+	}
+
+	public void leaveDancefloorParams ()
 	{
+		whereAmI = "Neutral";
 		currentMaxEntities = maxEntities - 1;
-		currentMinEntities = maxEntities + 1;
-        
-        foreach (Transform component in myRing)
-        {
-            if (component.gameObject.transform.parent != null)
-            {
-                component.gameObject.transform.localScale = normalRingScale;
-            }
-        }
-        Debug.Log("max" + maxEntities);
-        Debug.Log("curr max" + currentMaxEntities);
-        Debug.Log("min" + minEntities);
-        Debug.Log("curr min" + currentMinEntities);
-        happyChecker();
+		currentMinEntities = maxEntities;
 
-    }
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = normalRingScale;
+			}
+		}
+
+		Debug.Log ("Extrovert Exited Dancefloor");
+		happyChecker ();
+
+	}
+
+	//ZONE 2 PARAMS
+	public void enterBarParams ()
+	{
+		whereAmI = "Bar";
+		currentMinEntities = currentMinEntities + 1;
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = zone2RingScale;
+			}
+		}
+		Debug.Log ("Extrovert Entered Bar");
+		happyChecker();
+	}
+
+	public void leaveBarParams ()
+	{
+		whereAmI = "Neutral";
+		currentMinEntities = minEntities;
+		foreach (Transform component in myRing)
+		{
+			if (component.gameObject.transform.parent != null)
+			{
+				component.gameObject.transform.localScale = normalRingScale;
+			}
+		}
+		Debug.Log ("Extrovert Left Bar");
+		happyChecker();
+	}
 
 }
