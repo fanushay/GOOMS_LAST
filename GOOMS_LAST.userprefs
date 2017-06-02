@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Friend.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Friend.cs" Line="125" Column="7" />
+      <File FileName="Assets/Scripts/Introvert.cs" Line="119" Column="7" />
+      <File FileName="Assets/Scripts/Extrovert.cs" Line="124" Column="7" />
+      <File FileName="Assets/Scripts/CircleSpace.cs" Line="39" Column="152" />
+      <File FileName="Assets/Scripts/GameManagerScript.cs" Line="69" Column="90" />
+      <File FileName="Assets/Scripts/GameTimer.cs" Line="51" Column="6" />
+      <File FileName="Assets/Scripts/Drag.cs" Line="22" Column="32" />
+      <File FileName="Assets/Scripts/Dialogue.cs" Line="16" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
