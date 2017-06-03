@@ -1,7 +1,7 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GOOMS_LAST", "Assembly-CSharp.csproj", "{0091CBA6-AF7D-C47D-2B5A-4D14033CACA7}"
+# Visual Studio 2008
+
+Project("{AA00D7B2-71B6-F617-6EDD-768C9EE859D1}") = "GOOMS_LAST", "Assembly-CSharp.csproj", "{0091CBA6-AF7D-C47D-2B5A-4D14033CACA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
