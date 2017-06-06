@@ -26,6 +26,10 @@ public class Extrovert : MonoBehaviour {
 
 	public Dialogue myDialogue;
 
+	public Sprite comfortableSprite;
+	public Sprite uncomfortableSprite;
+	public SpriteRenderer mySprite;
+
 	void Start() {
 		myRing = gameObject.GetComponentsInChildren<Transform> ();
 
@@ -47,6 +51,7 @@ public class Extrovert : MonoBehaviour {
 			amIhappy = false;
 			myColorManager.UnhappyAnimation (); //unHappy
 			myGameManager.addToList(gameObject, amIhappy);
+			mySprite.sprite = uncomfortableSprite;
 		}
 		else if (myCircleSpace.entities.Count <= currentMaxEntities && myCircleSpace.entities.Count >= currentMinEntities)
 		{
@@ -54,6 +59,7 @@ public class Extrovert : MonoBehaviour {
 			amIhappy = true;
 			myColorManager.HappyAnimation (); //happy
 			myGameManager.addToList(gameObject, amIhappy);
+			mySprite.sprite = comfortableSprite;
 		}
 		myDialogue.gameObject.SendMessage ("PleaseTellMeWhereIAm", whereAmI);
 		myDialogue.gameObject.SendMessage ("PleaseTellMeIfImHappy", amIhappy);
