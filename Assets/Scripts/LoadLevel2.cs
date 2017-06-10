@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class LoadLevel2 : MonoBehaviour {
-
 	public Button startButton;
 
 
@@ -17,5 +15,6 @@ public class LoadLevel2 : MonoBehaviour {
 
 	public void StartLevel(){
 		SceneManager.LoadScene("Level2");
+
 	}
 }
