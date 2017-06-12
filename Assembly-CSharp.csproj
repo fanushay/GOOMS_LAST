@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scripts\LoadLevel5.cs" />
      <Compile Include="Assets\Scripts\LoadLevel6.cs" />
      <Compile Include="Assets\Scripts\LoadLevel7.cs" />
+     <Compile Include="Assets\Scripts\LoadLevel8.cs" />
+     <Compile Include="Assets\Scripts\LoadLevel9.cs" />
      <Compile Include="Assets\Scripts\QuitGame.cs" />
      <Compile Include="Assets\Scripts\ReloadLevel.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
