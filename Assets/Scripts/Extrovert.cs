@@ -107,7 +107,7 @@ public class Extrovert : MonoBehaviour {
 	public void enterBarParams ()
 	{
 		whereAmI = "Bar";
-		currentMinEntities = currentMinEntities + 1;
+		currentMinEntities = currentMinEntities +1;
 		foreach (Transform component in myRing)
 		{
 			if (component.gameObject.transform.parent != null)
